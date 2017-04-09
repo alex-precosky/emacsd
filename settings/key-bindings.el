@@ -9,10 +9,6 @@
 (global-set-key (kbd "M-<left>") 'smart-backward)
 (global-set-key (kbd "M-<right>") 'smart-forward)
 
-;; Like isearch, but adds region (if any) to history and deactivates mark
-(global-set-key (kbd "C-s") 'isearch-forward-use-region)
-(global-set-key (kbd "C-r") 'isearch-backward-use-region)
-
 ;; Comment/uncomment block
 (global-set-key (kbd "C-c c") 'comment-or-uncomment-region)
 (global-set-key (kbd "C-c u") 'uncomment-region)
