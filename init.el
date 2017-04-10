@@ -99,6 +99,7 @@
 ;; Font lock dash.el
 (eval-after-load "dash" '(dash-enable-font-lock))
 
+(eval-after-load 'flycheck '(require 'setup-flycheck))
 
 ;; Highlight escape sequences
 (require 'highlight-escape-sequences)
