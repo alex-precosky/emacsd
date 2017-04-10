@@ -101,6 +101,8 @@
 
 (eval-after-load 'flycheck '(require 'setup-flycheck))
 
+(add-hook 'html-mode-hook 'flycheck-mode)
+
 ;; Highlight escape sequences
 (require 'highlight-escape-sequences)
 (hes-mode)
