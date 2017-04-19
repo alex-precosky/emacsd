@@ -73,6 +73,7 @@
      undo-tree
      smex
      skewer-mode
+     jedi
      )))
 
 (condition-case nil
@@ -101,7 +102,10 @@
 
 (eval-after-load 'flycheck '(require 'setup-flycheck))
 
-(add-hook 'html-mode-hook 'flycheck-mode)
+;; jedi
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t)
+
 
 ;; Highlight escape sequences
 (require 'highlight-escape-sequences)
@@ -121,14 +125,21 @@
 ;; Setup key bindings
 (require 'key-bindings)
 
+;; Makes buffer switching show even closed files
+(setq ido-use-virtual-buffers t)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" default)))
+ '(nyan-mode t)
  '(package-selected-packages
    (quote
-    (skewer-mode yasnippet whitespace-cleanup-mode visual-regexp undo-tree string-edit smooth-scrolling smex smartparens simple-httpd restclient prodigy paredit move-text markdown-mode magit ido-vertical-mode ido-ubiquitous ido-at-point htmlize highlight-escape-sequences guide-key flycheck-pos-tip flx-ido fill-column-indicator elisp-slime-nav dockerfile-mode dired-details css-eldoc))))
+    (csv-mode nyan-mode monokai-theme jedi skewer-mode yasnippet whitespace-cleanup-mode visual-regexp undo-tree string-edit smooth-scrolling smex smartparens simple-httpd restclient prodigy paredit move-text markdown-mode magit ido-vertical-mode ido-ubiquitous ido-at-point htmlize highlight-escape-sequences guide-key flycheck-pos-tip flx-ido fill-column-indicator elisp-slime-nav dockerfile-mode dired-details css-eldoc))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
