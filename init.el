@@ -75,6 +75,7 @@
      skewer-mode
      jedi
      powerline
+     csharp-mode
      )))
 
 (condition-case nil
@@ -87,6 +88,11 @@
 (require 'sane-defaults)
 
 
+
+;; csharp mode
+(autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
+(setq auto-mode-alist
+   (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
 
 ;; Setup extensions
 (eval-after-load 'ido '(require 'setup-ido))
