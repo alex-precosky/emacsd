@@ -113,6 +113,11 @@
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:complete-on-dot t)
 
+;; ipython
+(setq
+   python-shell-interpreter "ipython"
+   python-shell-interpreter-args "--profile=dev"
+)
 
 ;; Highlight escape sequences
 (require 'highlight-escape-sequences)
