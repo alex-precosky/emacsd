@@ -1,5 +1,8 @@
 (require 'yasnippet)
 
+;; Use only own snippets, do not use bundled ones
+(setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+(yas-global-mode 1)
 
 ;; Jump to end of snippet definition
 (define-key yas-keymap (kbd "<return>") 'yas-exit-all-snippets)
