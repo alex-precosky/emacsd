@@ -110,13 +110,16 @@
 (eval-after-load 'flycheck '(require 'setup-flycheck))
 
 ;; jedi
-(add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:complete-on-dot t)
+(add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'python-mode-hook 'anaconda-mode)
+(eval-after-load "company"
+ '(add-to-list 'company-backends 'company-anaconda))
+;(setq jedi:complete-on-dot t)
 
 ;; ipython
 (setq
    python-shell-interpreter "ipython"
-   python-shell-interpreter-args "--profile=dev"
+   python-shell-interpreter-args "--profile=dev --pylab=auto"
 )
 
 ;; Highlight escape sequences
@@ -152,6 +155,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(company-clang-executable
+   "c:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/ClangC2/bin/amd64/clang.exe")
  '(custom-safe-themes
    (quote
     ("f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" default)))
@@ -159,7 +164,7 @@
  '(nyan-mode t)
  '(package-selected-packages
    (quote
-    (0blayout csharp-mode powerline csv-mode nyan-mode monokai-theme jedi skewer-mode yasnippet whitespace-cleanup-mode visual-regexp undo-tree string-edit smooth-scrolling smex smartparens simple-httpd restclient prodigy paredit move-text markdown-mode magit ido-vertical-mode ido-ubiquitous ido-at-point htmlize highlight-escape-sequences guide-key flycheck-pos-tip flx-ido fill-column-indicator elisp-slime-nav dockerfile-mode dired-details css-eldoc))))
+    (company company-anaconda anaconda-mode 0blayout csharp-mode powerline csv-mode nyan-mode monokai-theme skewer-mode yasnippet whitespace-cleanup-mode visual-regexp undo-tree string-edit smooth-scrolling smex smartparens simple-httpd restclient prodigy paredit move-text markdown-mode magit ido-vertical-mode ido-ubiquitous ido-at-point htmlize highlight-escape-sequences guide-key flycheck-pos-tip flx-ido fill-column-indicator elisp-slime-nav dockerfile-mode dired-details css-eldoc))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
