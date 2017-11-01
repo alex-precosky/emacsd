@@ -58,6 +58,7 @@
      yasnippet
      smartparens
      ido-vertical-mode
+     ido-ubiquitous
      ido-at-point
      simple-httpd
      guide-key
