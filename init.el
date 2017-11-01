@@ -1,3 +1,5 @@
+;; used https://github.com/magnars as a starting point
+
 ;; install first:
 ;; dash (modern list API)
 
@@ -58,7 +60,6 @@
      yasnippet
      smartparens
      ido-vertical-mode
-     ido-ubiquitous
      ido-at-point
      simple-httpd
      guide-key
@@ -90,7 +91,7 @@
 
 ;; Setup extensions
 (eval-after-load 'ido '(require 'setup-ido))
-;;(eval-after-load 'org '(require 'setup-org))
+(eval-after-load 'org '(require 'setup-org))
 (eval-after-load 'dired '(require 'setup-dired))
 (eval-after-load 'magit '(require 'setup-magit))
 ;;(eval-after-load 'grep '(require 'setup-rgrep))
