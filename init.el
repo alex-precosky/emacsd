@@ -76,6 +76,7 @@
      skewer-mode
      jedi
      powerline
+     monokai-theme
      )))
 
 (condition-case nil
