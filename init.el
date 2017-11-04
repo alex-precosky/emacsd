@@ -109,6 +109,10 @@
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:complete-on-dot t)
 
+;; python shell to ipython
+(require 'python)
+(setq python-shell-interpreter "ipython")
+(setq python-shell-interpreter-args "--pylab")
 
 ;; Highlight escape sequences
 (require 'highlight-escape-sequences)
