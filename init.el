@@ -78,6 +78,7 @@
      jedi
      powerline
      csharp-mode
+     monokai-theme
      )))
 
 (condition-case nil
