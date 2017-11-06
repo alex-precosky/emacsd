@@ -1,6 +1,5 @@
 ;; used https://github.com/magnars as a starting point
 
-
 ;; install first:
 ;; dash (modern list API)
 
@@ -77,8 +76,8 @@
      skewer-mode
      jedi
      powerline
-     csharp-mode
      monokai-theme
+     conda
      )))
 
 (condition-case nil
@@ -91,11 +90,6 @@
 (require 'sane-defaults)
 
 
-
-;; csharp mode
-(autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
-(setq auto-mode-alist
-   (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
 
 ;; Setup extensions
 (eval-after-load 'ido '(require 'setup-ido))
@@ -113,17 +107,17 @@
 (eval-after-load 'flycheck '(require 'setup-flycheck))
 
 ;; jedi
-(add-hook 'after-init-hook 'global-company-mode)
-(add-hook 'python-mode-hook 'anaconda-mode)
-(eval-after-load "company"
- '(add-to-list 'company-backends 'company-anaconda))
-;(setq jedi:complete-on-dot t)
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t)
 
-;; ipython
-(setq
-   python-shell-interpreter "ipython"
-   python-shell-interpreter-args "--profile=dev --pylab=auto"
-)
+;; conda mode 
+(require 'conda)
+(custom-set-variables
+ '(conda-anaconda-home "c:/Users/Alex/Anaconda3"))
+;; eshell support
+(conda-env-initialize-eshell)
+;; if you want auto-activation (see below for details), include:
+(conda-env-autoactivate-mode t)
 
 ;; Highlight escape sequences
 (require 'highlight-escape-sequences)
@@ -158,16 +152,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(company-clang-executable
-   "c:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/ClangC2/bin/amd64/clang.exe")
  '(custom-safe-themes
    (quote
-    ("f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" default)))
+    ("8ed752276957903a270c797c4ab52931199806ccd9f0c3bb77f6f4b9e71b9272" "f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" default)))
  '(electric-indent-mode nil)
  '(nyan-mode t)
  '(package-selected-packages
    (quote
-    (company company-anaconda anaconda-mode 0blayout csharp-mode powerline csv-mode nyan-mode monokai-theme skewer-mode yasnippet whitespace-cleanup-mode visual-regexp undo-tree string-edit smooth-scrolling smex smartparens simple-httpd restclient prodigy paredit move-text markdown-mode magit ido-vertical-mode ido-ubiquitous ido-at-point htmlize highlight-escape-sequences guide-key flycheck-pos-tip flx-ido fill-column-indicator elisp-slime-nav dockerfile-mode dired-details css-eldoc))))
+    (conda flymake-solidity solidity-mode powerline csv-mode nyan-mode monokai-theme jedi skewer-mode yasnippet whitespace-cleanup-mode visual-regexp undo-tree string-edit smooth-scrolling smex smartparens simple-httpd restclient prodigy paredit move-text markdown-mode magit ido-vertical-mode ido-completing-read ido-at-point htmlize highlight-escape-sequences guide-key flycheck-pos-tip flx-ido fill-column-indicator elisp-slime-nav dockerfile-mode dired-details css-eldoc))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
