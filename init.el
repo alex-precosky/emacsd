@@ -36,6 +36,9 @@
 (package-initialize)
 
 
+;; tramp
+(setq tramp-default-method "plink")
+
 ;; Setup packages
 (require 'setup-package)
 
@@ -78,6 +81,7 @@
      powerline
      monokai-theme
      conda
+     tramp
      )))
 
 (condition-case nil
