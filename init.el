@@ -33,6 +33,9 @@
 	     '("marmalade" . "http://marmalade-repo.org/packages/")
 	     t)
 
+(add-to-list 'package-archives
+             '("elpy" . "https://jorgenschaefer.github.io/packages/"))
+
 (package-initialize)
 
 
@@ -50,6 +53,7 @@
      company
      ggtags
      helm
+     elpy
      paredit
      move-text
      htmlize
@@ -113,10 +117,8 @@
 
 (eval-after-load 'flycheck '(require 'setup-flycheck))
 
-;; jedi
-(add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:complete-on-dot t)
-
+;; python
+(elpy-enable)
 
 ;; python shell to ipython
 (require 'python)
@@ -145,8 +147,7 @@
  '(nyan-mode t)
  '(package-selected-packages
    (quote
-
-    (helm ggtags company-c-headers conda flymake-solidity solidity-mode powerline csv-mode nyan-mode monokai-theme jedi skewer-mode yasnippet whitespace-cleanup-mode visual-regexp undo-tree string-edit smooth-scrolling smex smartparens simple-httpd restclient prodigy paredit move-text markdown-mode magit ido-vertical-mode ido-completing-read ido-at-point htmlize highlight-escape-sequences guide-key flycheck-pos-tip flx-ido fill-column-indicator elisp-slime-nav dockerfile-mode dired-details css-eldoc))))
+    (elpy helm ggtags company-c-headers conda flymake-solidity solidity-mode powerline csv-mode nyan-mode monokai-theme jedi skewer-mode yasnippet whitespace-cleanup-mode visual-regexp undo-tree string-edit smooth-scrolling smex smartparens simple-httpd restclient prodigy paredit move-text markdown-mode magit ido-vertical-mode ido-completing-read ido-at-point htmlize highlight-escape-sequences guide-key flycheck-pos-tip flx-ido fill-column-indicator elisp-slime-nav dockerfile-mode dired-details css-eldoc))))
 
 ;; eshell support
 (conda-env-initialize-eshell)
