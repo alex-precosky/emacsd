@@ -105,7 +105,7 @@
 
 ;; Setup extensions
 (eval-after-load 'ido '(require 'setup-ido))
-(eval-after-load 'org '(require 'setup-org))
+'(require 'setup-org)
 (eval-after-load 'dired '(require 'setup-dired))
 (eval-after-load 'magit '(require 'setup-magit))
 ;;(eval-after-load 'grep '(require 'setup-rgrep))
@@ -194,3 +194,12 @@
 
 
 (load-theme 'monokai)
+
+; site-specific config files
+(defvar host (substring (shell-command-to-string "hostname") 0 -1))
+(defvar host-dir (concat "~/.emacs.d/hosts/" host))
+(add-to-list 'load-path host-dir)
+
+
+(let ((init-host-feature (intern (concat "init-" host))))
+  (require 'init-VAN01WD-104211 nil 'noerror))
