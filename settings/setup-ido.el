@@ -57,8 +57,6 @@
 (require 'ido-at-point)
 (ido-at-point-mode)
 
-;; Use ido everywhere
-(ido-ubiquitous-mode 1)
 
 ;; Fix ido-ubiquitous for newer packages
 (defmacro ido-ubiquitous-use-new-completing-read (cmd package)
