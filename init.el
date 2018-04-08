@@ -143,7 +143,7 @@
  '(conda-anaconda-home "c:/Users/Alex/Anaconda3")
  '(custom-safe-themes
    (quote
-    ("8ed752276957903a270c797c4ab52931199806ccd9f0c3bb77f6f4b9e71b9272" "f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" default)))
+    ("f0c98535db38af17e81e491a77251e198241346306a90c25eb982b57e687d7c0" "8ed752276957903a270c797c4ab52931199806ccd9f0c3bb77f6f4b9e71b9272" "f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" default)))
  '(electric-indent-mode nil)
  '(nyan-mode t)
  '(package-selected-packages
