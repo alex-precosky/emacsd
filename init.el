@@ -102,12 +102,23 @@
 (require 'sane-defaults)
 
 
+; site-specific config files
+(defvar host (substring (shell-command-to-string "hostname") 0 -1))
+(defvar host-dir (concat "~/.emacs.d/hosts/" host))
+(add-to-list 'load-path host-dir)
+
+
+(let ((init-host-feature (intern (concat "init-" host))))
+  (require 'init-VAN01WD-104211 nil 'noerror))
+
+
 
 ;; Setup extensions
 (eval-after-load 'ido '(require 'setup-ido))
-'(require 'setup-org)
 (eval-after-load 'dired '(require 'setup-dired))
 (eval-after-load 'magit '(require 'setup-magit))
+(require 'setup-org)
+
 ;;(eval-after-load 'grep '(require 'setup-rgrep))
 ;;(eval-after-load 'shell '(require 'setup-shell))
 (require 'setup-yasnippet)
@@ -197,11 +208,3 @@
 
 (load-theme 'monokai)
 
-; site-specific config files
-(defvar host (substring (shell-command-to-string "hostname") 0 -1))
-(defvar host-dir (concat "~/.emacs.d/hosts/" host))
-(add-to-list 'load-path host-dir)
-
-
-(let ((init-host-feature (intern (concat "init-" host))))
-  (require 'init-VAN01WD-104211 nil 'noerror))
