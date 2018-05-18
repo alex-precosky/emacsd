@@ -3,6 +3,7 @@
 
 (setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))
 
+(setq org-log-done 'time)
 
 (setq org-agenda-files (list (concat org-directory "/notes.org")))
 
