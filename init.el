@@ -107,10 +107,8 @@
 (defvar host-dir (concat "~/.emacs.d/hosts/" host))
 (add-to-list 'load-path host-dir)
 
-
 (let ((init-host-feature (intern (concat "init-" host))))
-  (require 'init-VAN01WD-104211 nil 'noerror))
-
+  (require (intern (concat "init-" host)) nil 'noerror))
 
 
 ;; Setup extensions
