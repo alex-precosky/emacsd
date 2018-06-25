@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: unittest
+# key: unittest
+# --
+import unittest
+
+class test_Solution(unittest.TestCase):
+
+    def test_1(self):
+      	self.assertEqual(expected, actual)
+
