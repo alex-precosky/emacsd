@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: A named argument for argparse
+# key: arg_named
+# --
+parser.add_argument('--sum', dest='accumulate', action='store_const',
+const=sum, default=max,
+help='sum the integers (default: find the max)')parser.add_argument('--sum', dest='accumulate', action='store_const',
+const=sum, default=max,
+help='sum the integers (default: find the max)')
