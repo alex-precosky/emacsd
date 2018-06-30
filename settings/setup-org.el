@@ -6,13 +6,16 @@
 (setq org-log-done 'time)
 
 (if (boundp 'org-directory)
+    (progn 
     (setq org-agenda-files (list (concat org-directory "/notes.org")))
 
   (setq org-capture-templates
-	'(("t" "Todo" entry (file+headline (concat org-directory "/notes.org") "Incoming Tasks")
+	`(("t" "Todo" entry (file+headline ,(concat org-directory "/notes.org") "Incoming Tasks")
         "* TODO %?\n  %i\n")
-   ("j" "Journal" entry (file+olp+datetree (concat org-directory "/journal.org"))
+   ("j" "Journal" entry (file+olp+datetree ,(concat org-directory "/journal.org"))
         "* %?\nEntered on %U\n  %i\n  %a")))
+  ) ; progn
+
 ) ;endif
 (provide 'setup-org)
 
