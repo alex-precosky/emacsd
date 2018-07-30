@@ -93,6 +93,7 @@
      srefactor
      cmake-mode
      nyan-mode
+     basic-mode
      )))
 
 (condition-case nil
