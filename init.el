@@ -94,6 +94,8 @@
      cmake-mode
      nyan-mode
      basic-mode
+     git-gutter
+     ansible
      )))
 
 (condition-case nil
@@ -120,6 +122,8 @@
 (eval-after-load 'dired '(require 'setup-dired))
 (eval-after-load 'magit '(require 'setup-magit))
 (require 'setup-org)
+
+(global-git-gutter-mode +1)
 
 ;;(eval-after-load 'grep '(require 'setup-rgrep))
 ;;(eval-after-load 'shell '(require 'setup-shell))
@@ -174,7 +178,9 @@
  '(nyan-mode t)
  '(package-selected-packages
    (quote
-    (yaml-mode basic-mode exec-path-from-shell srefactor cmake-mode solarized-theme realgud elpy helm ggtags company-c-headers conda flymake-solidity solidity-mode powerline csv-mode nyan-mode monokai-theme jedi skewer-mode yasnippet whitespace-cleanup-mode visual-regexp undo-tree string-edit smooth-scrolling smex smartparens simple-httpd restclient prodigy paredit move-text markdown-mode magit ido-vertical-mode ido-completing-read ido-at-point htmlize highlight-escape-sequences guide-key flycheck-pos-tip flx-ido fill-column-indicator elisp-slime-nav dockerfile-mode dired-details css-eldoc))))
+
+    (ansible fireplace git-gutter yaml-mode basic-mode exec-path-from-shell srefactor cmake-mode solarized-theme realgud elpy helm ggtags company-c-headers conda flymake-solidity solidity-mode powerline csv-mode nyan-mode monokai-theme jedi skewer-mode yasnippet whitespace-cleanup-mode visual-regexp undo-tree string-edit smooth-scrolling smex smartparens simple-httpd restclient prodigy paredit move-text markdown-mode magit ido-vertical-mode ido-completing-read ido-at-point htmlize highlight-escape-sequences guide-key flycheck-pos-tip flx-ido fill-column-indicator elisp-slime-nav dockerfile-mode dired-details css-eldoc))))
+
 
 ;; eshell support
 (conda-env-initialize-eshell)
