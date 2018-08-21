@@ -130,6 +130,7 @@
 ;; neotree
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
+(setq neo-smart-open t)
 
 ;;(eval-after-load 'grep '(require 'setup-rgrep))
 ;;(eval-after-load 'shell '(require 'setup-shell))
@@ -232,3 +233,5 @@
 
 (load-theme 'monokai)
 
+
+(server-start)
