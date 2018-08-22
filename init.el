@@ -65,13 +65,10 @@
      flycheck-pos-tip
      flx
      f
-     flx-ido
      dired-details
      css-eldoc
      yasnippet
      smartparens
-     ido-vertical-mode
-     ido-at-point
      simple-httpd
      guide-key
      restclient
@@ -97,6 +94,9 @@
      git-gutter
      ansible
      neotree
+     ivy
+     councel
+     swiper
      )))
 
 (condition-case nil
@@ -119,7 +119,6 @@
 
 
 ;; Setup extensions
-(eval-after-load 'ido '(require 'setup-ido))
 (eval-after-load 'dired '(require 'setup-dired))
 (eval-after-load 'magit '(require 'setup-magit))
 (require 'setup-org)
@@ -135,6 +134,14 @@
 ;;(eval-after-load 'grep '(require 'setup-rgrep))
 ;;(eval-after-load 'shell '(require 'setup-shell))
 (require 'setup-yasnippet)
+
+(require 'ivy)
+(require 'counsel)
+(ivy-mode 1)
+(setq magit-completing-read-function 'ivy-completing-read)
+(global-set-key "\C-s" 'swiper)
+(global-set-key (kbd "M-x") 'counsel-M-x)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
 
 
 ;; Font lock dash.el
@@ -180,12 +187,12 @@
  '(conda-anaconda-home "c:/Users/Alex/Anaconda3")
  '(custom-safe-themes
    (quote
-    ("c3d4af771cbe0501d5a865656802788a9a0ff9cf10a7df704ec8b8ef69017c68" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "8ed752276957903a270c797c4ab52931199806ccd9f0c3bb77f6f4b9e71b9272" "f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" default)))
+    ("8ed752276957903a270c797c4ab52931199806ccd9f0c3bb77f6f4b9e71b9272" "f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" default)))
  '(electric-indent-mode nil)
  '(nyan-mode t)
  '(package-selected-packages
    (quote
-    (neotree ansible fireplace git-gutter yaml-mode basic-mode exec-path-from-shell srefactor cmake-mode solarized-theme realgud elpy helm ggtags company-c-headers conda flymake-solidity solidity-mode powerline csv-mode nyan-mode monokai-theme jedi skewer-mode yasnippet whitespace-cleanup-mode visual-regexp undo-tree string-edit smooth-scrolling smex smartparens simple-httpd restclient prodigy paredit move-text markdown-mode magit ido-vertical-mode ido-completing-read ido-at-point htmlize highlight-escape-sequences guide-key flycheck-pos-tip flx-ido fill-column-indicator elisp-slime-nav dockerfile-mode dired-details css-eldoc))))
+    (counsel ivy-yasnippet swiper elpy helm ggtags company-c-headers conda flymake-solidity solidity-mode powerline csv-mode nyan-mode monokai-theme jedi skewer-mode yasnippet whitespace-cleanup-mode visual-regexp undo-tree string-edit smooth-scrolling smex smartparens simple-httpd restclient prodigy paredit move-text markdown-mode magit ido-vertical-mode ido-completing-read ido-at-point htmlize highlight-escape-sequences guide-key flycheck-pos-tip flx-ido fill-column-indicator elisp-slime-nav dockerfile-mode dired-details css-eldoc))))
 
 
 ;; eshell support
