@@ -220,7 +220,8 @@
 (require 'key-bindings)
 
 ;; Makes buffer switching show even closed files
-(setq ido-use-virtual-buffers t)
+(setq ivy-use-virtual-buffers t)
+(setq ivy-count-format "(%d/%d) ")
 
 
 (require 'powerline)
