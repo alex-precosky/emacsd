@@ -98,6 +98,7 @@
      counsel
      swiper
      org-bullets
+     flymake-google-cpplint
      )))
 
 (condition-case nil
@@ -169,11 +170,20 @@
 
 (add-hook 'c-mode-common-hook
 	  (semantic-mode 1) )
+(add-hook 'c-mode-common-hook
+	  'company-mode )
+
 
 (global-set-key (kbd "M-TAB") 'company-complete-common)
 
 (define-key c-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
 (define-key c++-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
+
+(custom-set-variables
+ '(flymake-google-cpplint-command "/usr/local/bin/cpplint.py"))
+
+(require 'flymake-google-cpplint)
+(add-hook 'c++-mode-hook 'flymake-google-cpplint-load)
 
 
 ;; put backup files in one spot
@@ -199,7 +209,7 @@
  '(nyan-mode t)
  '(package-selected-packages
    (quote
-    (org-bullets counsel ivy-yasnippet swiper elpy helm ggtags company-c-headers conda flymake-solidity solidity-mode powerline csv-mode nyan-mode monokai-theme jedi skewer-mode yasnippet whitespace-cleanup-mode visual-regexp undo-tree string-edit smooth-scrolling smex smartparens simple-httpd restclient prodigy paredit move-text markdown-mode magit ido-vertical-mode ido-completing-read ido-at-point htmlize highlight-escape-sequences guide-key flycheck-pos-tip flx-ido fill-column-indicator elisp-slime-nav dockerfile-mode dired-details css-eldoc))))
+    (flymake-google-cpplint org-bullets counsel ivy-yasnippet swiper elpy helm ggtags company-c-headers conda flymake-solidity solidity-mode powerline csv-mode nyan-mode monokai-theme jedi skewer-mode yasnippet whitespace-cleanup-mode visual-regexp undo-tree string-edit smooth-scrolling smex smartparens simple-httpd restclient prodigy paredit move-text markdown-mode magit ido-vertical-mode ido-completing-read ido-at-point htmlize highlight-escape-sequences guide-key flycheck-pos-tip flx-ido fill-column-indicator elisp-slime-nav dockerfile-mode dired-details css-eldoc))))
 
 
 ;; eshell support
