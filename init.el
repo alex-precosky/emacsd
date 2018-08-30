@@ -176,6 +176,12 @@
 (define-key c++-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
 
 
+;; put backup files in one spot
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
+
 
 
 ;; conda mode 
