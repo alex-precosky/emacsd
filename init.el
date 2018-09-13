@@ -152,6 +152,12 @@
 (eval-after-load "dash" '(dash-enable-font-lock))
 
 (eval-after-load 'flycheck '(require 'setup-flycheck))
+(with-eval-after-load 'flycheck
+  (require 'flycheck-clang-analyzer)
+  (flycheck-clang-analyzer-setup))
+
+(setq clang-format-style-option "llvm")
+
 
 ;; python
 (elpy-enable)
@@ -174,6 +180,8 @@
 	  (semantic-mode 1) )
 (add-hook 'c-mode-common-hook
 	  'company-mode )
+(add-hook 'c-mode-common-hook
+	  'flycheck-mode )
 
 
 (global-set-key (kbd "M-TAB") 'company-complete-common)
@@ -200,7 +208,7 @@
  '(nyan-mode t)
  '(package-selected-packages
    (quote
-    (flycheck-clang-analyzer multiple-cursors org-bullets counsel ivy-yasnippet swiper elpy helm ggtags company-c-headers conda flymake-solidity solidity-mode powerline csv-mode nyan-mode monokai-theme jedi skewer-mode yasnippet whitespace-cleanup-mode visual-regexp undo-tree string-edit smooth-scrolling smex smartparens simple-httpd restclient prodigy paredit move-text markdown-mode magit ido-vertical-mode ido-completing-read ido-at-point htmlize highlight-escape-sequences guide-key flycheck-pos-tip flx-ido fill-column-indicator elisp-slime-nav dockerfile-mode dired-details css-eldoc))))
+    (clang-format flycheck-clang-analyzer multiple-cursors org-bullets counsel ivy-yasnippet swiper elpy helm ggtags company-c-headers conda flymake-solidity solidity-mode powerline csv-mode nyan-mode monokai-theme jedi skewer-mode yasnippet whitespace-cleanup-mode visual-regexp undo-tree string-edit smooth-scrolling smex smartparens simple-httpd restclient prodigy paredit move-text markdown-mode magit ido-vertical-mode ido-completing-read ido-at-point htmlize highlight-escape-sequences guide-key flycheck-pos-tip flx-ido fill-column-indicator elisp-slime-nav dockerfile-mode dired-details css-eldoc))))
 
 (require 'flymake-google-cpplint)
 (add-hook 'c++-mode-hook 'flymake-google-cpplint-load)
