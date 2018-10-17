@@ -101,6 +101,8 @@
      flymake-google-cpplint
      multiple-cursors
      flycheck-clang-analyzer
+     clang-format
+     git-timemachine
      )))
 
 (condition-case nil
@@ -156,13 +158,14 @@
   (require 'flycheck-clang-analyzer)
   (flycheck-clang-analyzer-setup))
 
-(setq clang-format-style-option "llvm")
+(setq clang-format-style-option "google")
 
 
 ;; python
 (elpy-enable)
 
 ;; python shell to ipython
+(setenv "IPY_TEST_SIMPLE_PROMPT" "1")
 (require 'python)
 (setq python-shell-interpreter "ipython")
 (setq python-shell-interpreter-args "--pylab")
@@ -197,6 +200,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(company-backends
+   (quote
+    (company-bbdb company-nxml company-css company-eclim company-semantic company-gtags company-xcode company-cmake company-capf company-files
+		  (company-dabbrev-code company-clang company-etags company-keywords)
+		  company-oddmuse company-dabbrev)))
  '(conda-anaconda-home "c:/Users/Alex/Anaconda3")
  '(custom-safe-themes
    (quote
@@ -204,11 +212,11 @@
  '(electric-indent-mode nil)
  '(flycheck-clang-include-path
    (quote
-    ("." "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/dcs/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/wds/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/dms/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/sms/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/rms/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/nas/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/cbk/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/swi/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/fms/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/qos/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/cat/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/audio/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/pds/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/sar/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/swiaudio/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/swiavms/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/swioma/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/omadm/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/voice/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/uim/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/loc/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/tmd/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/ims/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/imsa/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/swidms/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessModem/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsUtils/include" "/opt/ros/kinetic/include" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsLTEMsgs/build/include")))
+    ("." "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/dcs/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/wds/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/dms/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/sms/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/rms/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/nas/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/cbk/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/swi/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/fms/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/qos/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/cat/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/audio/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/pds/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/sar/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/swiaudio/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/swiavms/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/swioma/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/omadm/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/voice/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/uim/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/loc/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/tmd/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/ims/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/imsa/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessSDK/build/include/slqs/swidms/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsSierraWirelessModem/inc" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsUtils/include" "/opt/ros/kinetic/include" "/home/ANT.AMAZON.COM/precosky/ltev2_workspace/src/DexRoboticsLTEMsgs/build/include" "/home/ANT.AMAZON.COM/precosky/ell_workspace/src/DexELLVehicleFirmware/libs/include" "/home/ANT.AMAZON.COM/precosky/ell_workspace/src/DexELLVehicleFirmware/apps/runtime/include" "/home/ANT.AMAZON.COM/precosky/ell_workspace/src/DexELLVehicleFirmware/apps/common/include" "/home/ANT.AMAZON.COM/precosky/ell_workspace/src/DexELLHAL/CPU/RM57xx/include" "/home/ANT.AMAZON.COM/precosky/ell_workspace/src/DexELLuCOSii/uc-lib/include" "/home/ANT.AMAZON.COM/precosky/ell_workspace/src/DexELLuCOSii/uc-cpu/include" "/home/ANT.AMAZON.COM/precosky/ell_workspace/src/DexELLuCOSii/ucos-ii/include" "/home/ANT.AMAZON.COM/precosky/ell_workspace/src/DexELLMCUToHostProtocol/configuration/DexELLMCUToHostProtocol/include" "/home/ANT.AMAZON.COM/precosky/ell_workspace/src/DexELLHAL/include" "/home/ANT.AMAZON.COM/precosky/testtool_workspace/src/DexRoboticsSierraWirelessATCommander/inc")))
  '(nyan-mode t)
  '(package-selected-packages
    (quote
-    (clang-format flycheck-clang-analyzer multiple-cursors org-bullets counsel ivy-yasnippet swiper elpy helm ggtags company-c-headers conda flymake-solidity solidity-mode powerline csv-mode nyan-mode monokai-theme jedi skewer-mode yasnippet whitespace-cleanup-mode visual-regexp undo-tree string-edit smooth-scrolling smex smartparens simple-httpd restclient prodigy paredit move-text markdown-mode magit ido-vertical-mode ido-completing-read ido-at-point htmlize highlight-escape-sequences guide-key flycheck-pos-tip flx-ido fill-column-indicator elisp-slime-nav dockerfile-mode dired-details css-eldoc))))
+    (git-timemachine clang-format flycheck-clang-analyzer multiple-cursors org-bullets counsel ivy-yasnippet swiper elpy helm ggtags company-c-headers conda flymake-solidity solidity-mode powerline csv-mode nyan-mode monokai-theme jedi skewer-mode yasnippet whitespace-cleanup-mode visual-regexp undo-tree string-edit smooth-scrolling smex smartparens simple-httpd restclient prodigy paredit move-text markdown-mode magit ido-vertical-mode ido-completing-read ido-at-point htmlize highlight-escape-sequences guide-key flycheck-pos-tip flx-ido fill-column-indicator elisp-slime-nav dockerfile-mode dired-details css-eldoc))))
 
 (require 'flymake-google-cpplint)
 (add-hook 'c++-mode-hook 'flymake-google-cpplint-load)
