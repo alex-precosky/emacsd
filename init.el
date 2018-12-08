@@ -211,7 +211,10 @@
  '(custom-safe-themes
    (quote
     ("bd7b7c5df1174796deefce5debc2d976b264585d51852c962362be83932873d9" "c3d4af771cbe0501d5a865656802788a9a0ff9cf10a7df704ec8b8ef69017c68" "8ed752276957903a270c797c4ab52931199806ccd9f0c3bb77f6f4b9e71b9272" "f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" default)))
- '(electric-indent-mode nil))
+ '(electric-indent-mode nil)
+ '(package-selected-packages
+   (quote
+    (git-timemachine clang-format whitespace-cleanup-mode visual-regexp undo-tree string-edit srefactor smooth-scrolling smex smartparens skewer-mode restclient realgud prodigy powerline paredit org-bullets nyan-mode neotree multiple-cursors move-text monokai-theme markdown-mode magit jedi ivy-yasnippet ido-vertical-mode ido-ubiquitous ido-at-point htmlize highlight-escape-sequences helm guide-key git-gutter ggtags flymake-google-cpplint flycheck-pos-tip flycheck-clang-analyzer flx-ido fill-column-indicator elpy elisp-slime-nav dockerfile-mode dired-details css-eldoc counsel conda cmake-mode basic-mode ansible))))
 
  '(nyan-mode t)
  '(package-selected-packages
