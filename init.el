@@ -101,6 +101,10 @@
      swiper
      org-bullets
      flymake-google-cpplint
+     multiple-cursors
+     flycheck-clang-analyzer
+     clang-format
+     git-timemachine
      )))
 
 (condition-case nil
@@ -152,11 +156,18 @@
 (eval-after-load "dash" '(dash-enable-font-lock))
 
 (eval-after-load 'flycheck '(require 'setup-flycheck))
+(with-eval-after-load 'flycheck
+  (require 'flycheck-clang-analyzer)
+  (flycheck-clang-analyzer-setup))
+
+(setq clang-format-style-option "google")
+
 
 ;; python
 (elpy-enable)
 
 ;; python shell to ipython
+(setenv "IPY_TEST_SIMPLE_PROMPT" "1")
 (require 'python)
 (setq python-shell-interpreter "ipython")
 (setq python-shell-interpreter-args "--pylab")
@@ -174,31 +185,43 @@
 	  (semantic-mode 1) )
 (add-hook 'c-mode-common-hook
 	  'company-mode )
+(add-hook 'c-mode-common-hook
+	  'flycheck-mode )
 
+(setq-default c-basic-offset 4)
 
 (global-set-key (kbd "M-TAB") 'company-complete-common)
 
 (define-key c-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
 (define-key c++-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++11")))
+
+; multiple cursors
+(global-set-key (kbd "C-c m c") 'mc/edit-lines)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(company-backends
+   (quote
+    (company-bbdb company-nxml company-css company-eclim company-semantic company-gtags company-xcode company-cmake company-capf company-files
+		  (company-dabbrev-code company-clang company-etags company-keywords)
+		  company-oddmuse company-dabbrev)))
  '(conda-anaconda-home "c:/Users/Alex/Anaconda3")
  '(custom-safe-themes
    (quote
-    ("c3d4af771cbe0501d5a865656802788a9a0ff9cf10a7df704ec8b8ef69017c68" "8ed752276957903a270c797c4ab52931199806ccd9f0c3bb77f6f4b9e71b9272" "f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" default)))
+    ("bd7b7c5df1174796deefce5debc2d976b264585d51852c962362be83932873d9" "c3d4af771cbe0501d5a865656802788a9a0ff9cf10a7df704ec8b8ef69017c68" "8ed752276957903a270c797c4ab52931199806ccd9f0c3bb77f6f4b9e71b9272" "f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" default)))
  '(electric-indent-mode nil)
- '(flycheck-clang-include-path
+ '(package-selected-packages
    (quote
-    ("/Users/precosky/2018-09-11T02-20-24/configuration/DexELLMCUToHostProtocol/include")))
- '(flymake-google-cpplint-command "/usr/local/bin/cpplint.py")
+    (git-timemachine clang-format whitespace-cleanup-mode visual-regexp undo-tree string-edit srefactor smooth-scrolling smex smartparens skewer-mode restclient realgud prodigy powerline paredit org-bullets nyan-mode neotree multiple-cursors move-text monokai-theme markdown-mode magit jedi ivy-yasnippet ido-vertical-mode ido-ubiquitous ido-at-point htmlize highlight-escape-sequences helm guide-key git-gutter ggtags flymake-google-cpplint flycheck-pos-tip flycheck-clang-analyzer flx-ido fill-column-indicator elpy elisp-slime-nav dockerfile-mode dired-details css-eldoc counsel conda cmake-mode basic-mode ansible))))
+
  '(nyan-mode t)
  '(package-selected-packages
    (quote
-    (flymake-google-cpplint org-bullets counsel ivy-yasnippet swiper elpy helm ggtags company-c-headers conda flymake-solidity solidity-mode powerline csv-mode nyan-mode monokai-theme jedi skewer-mode yasnippet whitespace-cleanup-mode visual-regexp undo-tree string-edit smooth-scrolling smex smartparens simple-httpd restclient prodigy paredit move-text markdown-mode magit ido-vertical-mode ido-completing-read ido-at-point htmlize highlight-escape-sequences guide-key flycheck-pos-tip flx-ido fill-column-indicator elisp-slime-nav dockerfile-mode dired-details css-eldoc))))
+    (git-timemachine clang-format flycheck-clang-analyzer multiple-cursors org-bullets counsel ivy-yasnippet swiper elpy helm ggtags company-c-headers conda flymake-solidity solidity-mode powerline csv-mode nyan-mode monokai-theme jedi skewer-mode yasnippet whitespace-cleanup-mode visual-regexp undo-tree string-edit smooth-scrolling smex smartparens simple-httpd restclient prodigy paredit move-text markdown-mode magit ido-vertical-mode ido-completing-read ido-at-point htmlize highlight-escape-sequences guide-key flycheck-pos-tip flx-ido fill-column-indicator elisp-slime-nav dockerfile-mode dired-details css-eldoc)))
 
 (require 'flymake-google-cpplint)
 (add-hook 'c++-mode-hook 'flymake-google-cpplint-load)
