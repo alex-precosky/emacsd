@@ -181,8 +181,9 @@
 (require 'srefactor)
 (require 'srefactor-lisp)
 
-(add-hook 'c-mode-common-hook
-	  (setq-default indent-tabs-mode nil) )
+
+(setq-default set-indent-tabs-mode nil)
+
 (add-hook 'c-mode-common-hook
 	  (semantic-mode 1) )
 (add-hook 'c-mode-common-hook
