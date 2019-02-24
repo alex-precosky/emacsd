@@ -3,7 +3,8 @@
 ;; install first:
 ;; dash (modern list API)
 
-(setq debug-on-error t)
+;; Uncomment this when debugging things
+;; (setq debug-on-error t)
 
 ;; Set up load path
 (setq settings-dir
