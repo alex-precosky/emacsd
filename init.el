@@ -118,6 +118,13 @@
 ;; Lets start with a smattering of sanity
 (require 'sane-defaults)
 
+;; python
+(elpy-enable)
+
+;; python shell to ipython
+(setenv "IPY_TEST_SIMPLE_PROMPT" "1")
+(require 'python)
+(setq python-shell-interpreter "ipython")
 
 ; site-specific config files
 (defvar host (substring (shell-command-to-string "hostname") 0 -1))
@@ -164,15 +171,6 @@
 
 (setq clang-format-style-option "google")
 
-
-;; python
-(elpy-enable)
-
-;; python shell to ipython
-(setenv "IPY_TEST_SIMPLE_PROMPT" "1")
-(require 'python)
-(setq python-shell-interpreter "ipython")
-(setq python-shell-interpreter-args "--pylab")
 
 ;; c stuff
 (add-hook 'c-mode-common-hook
