@@ -220,7 +220,8 @@
    (quote
     ("bd7b7c5df1174796deefce5debc2d976b264585d51852c962362be83932873d9" "c3d4af771cbe0501d5a865656802788a9a0ff9cf10a7df704ec8b8ef69017c68" "8ed752276957903a270c797c4ab52931199806ccd9f0c3bb77f6f4b9e71b9272" "f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" default)))
  '(electric-indent-mode nil)
- '(flycheck-clang-args (quote ("")))
+ '(flycheck-clang-args (quote ("-Wsign-conversion")))
+ '(flycheck-clang-warnings (quote ("all" "extra")))
  '(nyan-mode t)
  '(package-selected-packages
    (quote
