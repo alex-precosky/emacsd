@@ -107,6 +107,7 @@
      clang-format
      git-timemachine
      projectile
+     expand-region
      )))
 
 (condition-case nil
@@ -141,6 +142,9 @@
 
 ;; git-gutter
 (global-git-gutter-mode +1)
+
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
 
 ;; neotree
 (require 'neotree)
