@@ -107,6 +107,7 @@
      clang-format
      git-timemachine
      projectile
+     expand-region
      )))
 
 (condition-case nil
@@ -133,8 +134,17 @@
 (eval-after-load 'magit '(require 'setup-magit))
 (require 'setup-org)
 
+;; gdb
+(eval-after-load "gud"
+  '(progn 
+     (define-key gud-mode-map (kbd "<up>") 'comint-previous-input)
+     (define-key gud-mode-map (kbd "<down>") 'comint-next-input)))
+
 ;; git-gutter
 (global-git-gutter-mode +1)
+
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
 
 ;; neotree
 (require 'neotree)
