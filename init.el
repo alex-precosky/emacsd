@@ -146,11 +146,17 @@
 (setq org-src-fontify-natively t)
 ;; Don't prompt before running code in org
 (setq org-confirm-babel-evaluate nil)
+
 ;; gdb
+;; gdb
+(setq gdb-many-windows 1)
 (eval-after-load "gud"
   '(progn 
      (define-key gud-mode-map (kbd "<up>") 'comint-previous-input)
      (define-key gud-mode-map (kbd "<down>") 'comint-next-input)))
+
+;;; Real GUD
+(require 'realgud)
 
 ;; git-gutter
 (global-git-gutter-mode +1)
@@ -292,11 +298,6 @@
 ;; Smart M-x is smart
 (require 'smex)
 (smex-initialize)
-
-
-;; gdb
-(setq gdb-many-windows 1)
-
 
 ;; Setup key bindings
 (require 'key-bindings)
