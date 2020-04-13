@@ -134,6 +134,18 @@
 (eval-after-load 'magit '(require 'setup-magit))
 (require 'setup-org)
 
+;; org-babel
+;; Run/highlight code using babel in org-mode
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '(
+   (shell . t)
+   ;; Include other languages here...
+   ))
+;; Syntax highlight in #+BEGIN_SRC blocks
+(setq org-src-fontify-natively t)
+;; Don't prompt before running code in org
+(setq org-confirm-babel-evaluate nil)
 ;; gdb
 (eval-after-load "gud"
   '(progn 
