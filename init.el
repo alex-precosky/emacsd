@@ -29,7 +29,7 @@
 (require 'package)
 
 (add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/")
+	     '("melpa" . "http://melpa.org/packages/")
 	     t)
 
 (add-to-list 'package-archives
@@ -244,25 +244,21 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(company-backends
-   (quote
-    (company-bbdb company-nxml company-css company-eclim company-semantic company-gtags company-xcode company-cmake company-capf company-files
+   '(company-bbdb company-nxml company-css company-eclim company-semantic company-gtags company-xcode company-cmake company-capf company-files
 		  (company-dabbrev-code company-clang company-etags company-keywords)
-		  company-oddmuse company-dabbrev)))
+		  company-oddmuse company-dabbrev))
  '(conda-anaconda-home "c:/Users/Alex/Anaconda3")
  '(custom-safe-themes
-   (quote
-    ("bd7b7c5df1174796deefce5debc2d976b264585d51852c962362be83932873d9" "c3d4af771cbe0501d5a865656802788a9a0ff9cf10a7df704ec8b8ef69017c68" "8ed752276957903a270c797c4ab52931199806ccd9f0c3bb77f6f4b9e71b9272" "f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" default)))
+   '("bd7b7c5df1174796deefce5debc2d976b264585d51852c962362be83932873d9" "c3d4af771cbe0501d5a865656802788a9a0ff9cf10a7df704ec8b8ef69017c68" "8ed752276957903a270c797c4ab52931199806ccd9f0c3bb77f6f4b9e71b9272" "f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" default))
  '(electric-indent-mode nil)
- '(flycheck-clang-args (quote ("-Wsign-conversion")))
- '(flycheck-clang-warnings (quote ("all" "extra")))
+ '(flycheck-clang-args '("-Wsign-conversion"))
+ '(flycheck-clang-warnings '("all" "extra"))
  '(nyan-mode t)
  '(package-selected-packages
-   (quote
-    (projectile git-timemachine clang-format flycheck-clang-analyzer multiple-cursors org-bullets counsel ivy-yasnippet swiper elpy helm ggtags company-c-headers conda flymake-solidity solidity-mode powerline csv-mode nyan-mode monokai-theme jedi skewer-mode yasnippet whitespace-cleanup-mode visual-regexp undo-tree string-edit smooth-scrolling smex smartparens simple-httpd restclient prodigy paredit move-text markdown-mode magit ido-vertical-mode ido-completing-read ido-at-point htmlize highlight-escape-sequences guide-key flycheck-pos-tip flx-ido fill-column-indicator elisp-slime-nav dockerfile-mode dired-details css-eldoc)))
+   '(projectile git-timemachine clang-format flycheck-clang-analyzer multiple-cursors org-bullets counsel ivy-yasnippet swiper elpy helm ggtags company-c-headers conda flymake-solidity solidity-mode powerline csv-mode nyan-mode monokai-theme jedi skewer-mode yasnippet whitespace-cleanup-mode visual-regexp undo-tree string-edit smooth-scrolling smex smartparens simple-httpd restclient prodigy paredit move-text markdown-mode magit ido-vertical-mode ido-completing-read ido-at-point htmlize highlight-escape-sequences guide-key flycheck-pos-tip flx-ido fill-column-indicator elisp-slime-nav dockerfile-mode dired-details css-eldoc))
  '(realgud:gdb-command-name "gdb-multiarch")
  '(whitespace-style
-   (quote
-    (face trailing tabs empty indentation space-after-tab space-before-tab tab-mark))))
+   '(face trailing tabs empty indentation space-after-tab space-before-tab tab-mark)))
 
 (require 'flymake-google-cpplint)
 (add-hook 'c++-mode-hook 'flymake-google-cpplint-load)
