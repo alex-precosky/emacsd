@@ -115,6 +115,16 @@
 (require 'sane-defaults)
 
 
+;; Show colours properly in compilation buffers
+(ignore-errors
+  (require 'ansi-color)
+  (defun colorize-compilation-buffer ()
+    (when (eq major-mode 'compilation-mode)
+      (let ((inhibit-read-only t))
+        (if (boundp 'compilation-filter-start)
+            (ansi-color-apply-on-region compilation-filter-start (point))))))
+  (add-hook 'compilation-filter-hook 'colorize-compilation-buffer))
+
 ; site-specific config files
 (defvar host (substring (shell-command-to-string "hostname") 0 -1))
 (defvar host-dir (concat "~/.emacs.d/hosts/" host))
