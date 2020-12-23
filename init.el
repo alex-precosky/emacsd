@@ -103,6 +103,7 @@
      git-timemachine
      projectile
      expand-region
+     lsp-java
      )))
 
 (condition-case nil
@@ -249,7 +250,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(company-backends
-   '(company-bbdb company-nxml company-css company-eclim company-semantic company-gtags company-xcode company-cmake company-capf company-files
+   '(company-bbdb company-nxml company-css company-eclim company-capf company-semantic company-gtags company-xcode company-cmake company-files
 		  (company-dabbrev-code company-clang company-etags company-keywords)
 		  company-oddmuse company-dabbrev))
  '(conda-anaconda-home "c:/Users/Alex/Anaconda3")
