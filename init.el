@@ -230,6 +230,7 @@
 	  'whitespace-mode )
 (add-hook 'c-mode-common-hook
           (lambda () (setq indent-tabs-mode nil)))
+(add-hook 'c-mode-common-hook 'yas-minor-mode)
 
 (setq-default c-basic-offset 4)
 
