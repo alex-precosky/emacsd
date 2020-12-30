@@ -236,6 +236,9 @@
 
 (global-set-key (kbd "M-TAB") 'company-complete-common)
 
+(setq company-minimum-prefix-length 1
+      company-idle-delay 0.0) ;; default is 0.2
+
 (define-key c-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
 (define-key c++-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++11")))
