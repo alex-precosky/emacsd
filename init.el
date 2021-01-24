@@ -243,6 +243,10 @@
 (define-key c++-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++11")))
 
+;; lsp
+(setq lsp-enable-on-type-formatting nil)
+(setq lsp-enable-indentation nil)
+
 ; multiple cursors
 (global-set-key (kbd "C-c m c") 'mc/edit-lines)
 
