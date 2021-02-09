@@ -209,6 +209,14 @@
 (setq python-shell-interpreter "ipython")
 (setq python-shell-interpreter-args "--pylab")
 
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(dap-ui-pending-breakpoint-face ((t (:underline "dim gray"))))
+ '(dap-ui-verified-breakpoint-face ((t (:underline "green")))))
+
 ;; c stuff
 (add-hook 'c-mode-common-hook
           (lambda ()
@@ -327,12 +335,7 @@
 (windmove-default-keybindings)
 
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
 
 (projectile-mode +1)
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
