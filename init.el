@@ -229,8 +229,7 @@
 
 (setq-default set-indent-tabs-mode nil)
 
-(add-hook 'c-mode-common-hook
-	  (semantic-mode 1) )
+(add-hook 'c-mode-common-hook 'lsp)
 (add-hook 'c-mode-common-hook
 	  'company-mode )
 (add-hook 'c-mode-common-hook
