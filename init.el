@@ -105,6 +105,7 @@
      expand-region
      lsp-java
      rust-mode
+     exec-path-from-shell
      )))
 
 (condition-case nil
@@ -116,6 +117,9 @@
 ;; Lets start with a smattering of sanity
 (require 'sane-defaults)
 
+
+(when (daemonp)
+  (exec-path-from-shell-initialize))
 
 ;; Show colours properly in compilation buffers
 (ignore-errors
