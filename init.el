@@ -333,7 +333,7 @@
 
 
 (require 'powerline)
-(powerline-default-theme)
+(powerline-center-theme)
 
 ;; S-arrow navigation for moving between windows
 (windmove-default-keybindings)
