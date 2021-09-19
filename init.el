@@ -35,8 +35,6 @@
 (add-to-list 'package-archives
              '("elpy" . "https://jorgenschaefer.github.io/packages/"))
 
-(package-initialize)
-
 
 ;; tramp
 (setq tramp-default-method "plink")
