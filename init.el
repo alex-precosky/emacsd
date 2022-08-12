@@ -81,7 +81,6 @@
      jedi
      powerline
      monokai-theme
-     conda
      tramp
      srefactor
      cmake-mode
@@ -271,7 +270,6 @@
    '(company-bbdb company-nxml company-css company-eclim company-capf company-semantic company-gtags company-xcode company-cmake company-files
 		  (company-dabbrev-code company-clang company-etags company-keywords)
 		  company-oddmuse company-dabbrev))
- '(conda-anaconda-home "c:/Users/Alex/Anaconda3")
  '(custom-safe-themes
    '("d9646b131c4aa37f01f909fbdd5a9099389518eb68f25277ed19ba99adeb7279" "8b58ef2d23b6d164988a607ee153fd2fa35ee33efc394281b1028c2797ddeebb" "bd7b7c5df1174796deefce5debc2d976b264585d51852c962362be83932873d9" "c3d4af771cbe0501d5a865656802788a9a0ff9cf10a7df704ec8b8ef69017c68" "8ed752276957903a270c797c4ab52931199806ccd9f0c3bb77f6f4b9e71b9272" "f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" default))
  '(electric-indent-mode nil)
@@ -284,7 +282,7 @@
  '(lsp-pyls-server-command '("pyls"))
  '(nyan-mode t)
  '(package-selected-packages
-   '(rust-mode projectile git-timemachine clang-format flycheck-clang-analyzer multiple-cursors org-bullets counsel ivy-yasnippet swiper elpy helm ggtags company-c-headers conda flymake-solidity solidity-mode powerline csv-mode nyan-mode monokai-theme jedi skewer-mode yasnippet whitespace-cleanup-mode visual-regexp undo-tree string-edit smooth-scrolling smex smartparens simple-httpd restclient prodigy paredit move-text markdown-mode magit ido-vertical-mode ido-completing-read ido-at-point htmlize highlight-escape-sequences guide-key flycheck-pos-tip flx-ido fill-column-indicator elisp-slime-nav dockerfile-mode css-eldoc))
+   '(rust-mode projectile git-timemachine clang-format flycheck-clang-analyzer multiple-cursors org-bullets counsel ivy-yasnippet swiper elpy helm ggtags company-c-headers flymake-solidity solidity-mode powerline csv-mode nyan-mode monokai-theme jedi skewer-mode yasnippet whitespace-cleanup-mode visual-regexp undo-tree string-edit smooth-scrolling smex smartparens simple-httpd restclient prodigy paredit move-text markdown-mode magit ido-vertical-mode ido-completing-read ido-at-point htmlize highlight-escape-sequences guide-key flycheck-pos-tip flx-ido fill-column-indicator elisp-slime-nav dockerfile-mode css-eldoc))
  '(realgud:gdb-command-name "gdb-multiarch")
  '(whitespace-style
    '(face trailing tabs empty indentation space-after-tab space-before-tab tab-mark)))
@@ -294,18 +292,6 @@
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
-
-
-
-;; conda mode 
-(require 'conda)
-
-
-
-;; eshell support
-(conda-env-initialize-eshell)
-;; if you want auto-activation (see below for details), include:
-(conda-env-autoactivate-mode t)
 
 
 ;; Highlight escape sequences
