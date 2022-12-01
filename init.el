@@ -198,7 +198,11 @@
                                 '(warning . c/c++-googlelint))))
 
 ;; python
-; (this space for rent)
+(use-package lsp-pyright
+  :ensure t
+  :hook (python-mode . (lambda()
+                         (require 'lsp-pyright)
+                         (lsp))))
 
 ;; python shell to ipython
 (setenv "IPY_TEST_SIMPLE_PROMPT" "1")
@@ -278,7 +282,7 @@
  '(lsp-pyls-server-command '("pyls"))
  '(nyan-mode t)
  '(package-selected-packages
-   '(use-package rust-mode projectile git-timemachine clang-format flycheck-clang-analyzer multiple-cursors org-bullets counsel ivy-yasnippet swiper helm ggtags company-c-headers flymake-solidity solidity-mode powerline csv-mode nyan-mode monokai-theme jedi skewer-mode yasnippet whitespace-cleanup-mode visual-regexp undo-tree string-edit smooth-scrolling smex smartparens simple-httpd restclient prodigy paredit move-text markdown-mode magit ido-vertical-mode ido-completing-read ido-at-point htmlize highlight-escape-sequences guide-key flycheck-pos-tip flx-ido fill-column-indicator elisp-slime-nav dockerfile-mode css-eldoc))
+   '(lsp-pyright use-package rust-mode projectile git-timemachine clang-format flycheck-clang-analyzer multiple-cursors org-bullets counsel ivy-yasnippet swiper helm ggtags company-c-headers flymake-solidity solidity-mode powerline csv-mode nyan-mode monokai-theme jedi skewer-mode yasnippet whitespace-cleanup-mode visual-regexp undo-tree string-edit smooth-scrolling smex smartparens simple-httpd restclient prodigy paredit move-text markdown-mode magit ido-vertical-mode ido-completing-read ido-at-point htmlize highlight-escape-sequences guide-key flycheck-pos-tip flx-ido fill-column-indicator elisp-slime-nav dockerfile-mode css-eldoc))
  '(realgud:gdb-command-name "gdb-multiarch")
  '(whitespace-style
    '(face trailing tabs empty indentation space-after-tab space-before-tab tab-mark)))
