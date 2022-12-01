@@ -32,10 +32,6 @@
 	     '("melpa" . "http://melpa.org/packages/")
 	     t)
 
-(add-to-list 'package-archives
-             '("elpy" . "https://jorgenschaefer.github.io/packages/"))
-
-
 ;; tramp
 (setq tramp-default-method "plink")
 
@@ -51,7 +47,6 @@
      company
      ggtags
      helm
-     elpy
      paredit
      move-text
      htmlize
@@ -202,7 +197,7 @@
                                 '(warning . c/c++-googlelint))))
 
 ;; python
-(elpy-enable)
+; (this space for rent)
 
 ;; python shell to ipython
 (setenv "IPY_TEST_SIMPLE_PROMPT" "1")
@@ -282,7 +277,7 @@
  '(lsp-pyls-server-command '("pyls"))
  '(nyan-mode t)
  '(package-selected-packages
-   '(rust-mode projectile git-timemachine clang-format flycheck-clang-analyzer multiple-cursors org-bullets counsel ivy-yasnippet swiper elpy helm ggtags company-c-headers flymake-solidity solidity-mode powerline csv-mode nyan-mode monokai-theme jedi skewer-mode yasnippet whitespace-cleanup-mode visual-regexp undo-tree string-edit smooth-scrolling smex smartparens simple-httpd restclient prodigy paredit move-text markdown-mode magit ido-vertical-mode ido-completing-read ido-at-point htmlize highlight-escape-sequences guide-key flycheck-pos-tip flx-ido fill-column-indicator elisp-slime-nav dockerfile-mode css-eldoc))
+   '(rust-mode projectile git-timemachine clang-format flycheck-clang-analyzer multiple-cursors org-bullets counsel ivy-yasnippet swiper helm ggtags company-c-headers flymake-solidity solidity-mode powerline csv-mode nyan-mode monokai-theme jedi skewer-mode yasnippet whitespace-cleanup-mode visual-regexp undo-tree string-edit smooth-scrolling smex smartparens simple-httpd restclient prodigy paredit move-text markdown-mode magit ido-vertical-mode ido-completing-read ido-at-point htmlize highlight-escape-sequences guide-key flycheck-pos-tip flx-ido fill-column-indicator elisp-slime-nav dockerfile-mode css-eldoc))
  '(realgud:gdb-command-name "gdb-multiarch")
  '(whitespace-style
    '(face trailing tabs empty indentation space-after-tab space-before-tab tab-mark)))
