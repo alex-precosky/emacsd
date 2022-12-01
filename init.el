@@ -111,7 +111,7 @@
 (require 'sane-defaults)
 
 
-(when (daemonp)
+(when (or (daemonp) (memq window-system '(mac ns)))
   (exec-path-from-shell-initialize))
 
 ;; Show colours properly in compilation buffers
