@@ -6,6 +6,9 @@
 ;; Uncomment this when debugging things
 ;; (setq debug-on-error t)
 
+;; So that straight doesn't fight with package
+(setq package-enable-at-startup nil)
+
 ;; Set up load path
 (setq settings-dir
       (expand-file-name "settings" user-emacs-directory))
@@ -124,6 +127,35 @@
             (ansi-color-apply-on-region compilation-filter-start (point))))))
   (add-hook 'compilation-filter-hook 'colorize-compilation-buffer))
 
+
+; straight package manager
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 6))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+
+;; python
+(use-package lsp-pyright
+  :ensure t
+  :hook (python-mode . (lambda()
+                         (require 'lsp-pyright)
+                         (lsp))))
+
+;; python shell to ipython
+(setenv "IPY_TEST_SIMPLE_PROMPT" "1")
+(require 'python)
+(setq python-shell-interpreter "ipython")
+(setq python-shell-interpreter-args "--pylab")
+
+
 ; site-specific config files
 (defvar host (substring (shell-command-to-string "hostname") 0 -1))
 (defvar host-dir (concat "~/.emacs.d/hosts/" host))
@@ -196,19 +228,6 @@
      ;; In default, syntax checked by Clang and Cppcheck.
      (flycheck-add-next-checker 'c/c++-clang
                                 '(warning . c/c++-googlelint))))
-
-;; python
-(use-package lsp-pyright
-  :ensure t
-  :hook (python-mode . (lambda()
-                         (require 'lsp-pyright)
-                         (lsp))))
-
-;; python shell to ipython
-(setenv "IPY_TEST_SIMPLE_PROMPT" "1")
-(require 'python)
-(setq python-shell-interpreter "ipython")
-(setq python-shell-interpreter-args "--pylab")
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
