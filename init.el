@@ -68,7 +68,6 @@
      elisp-slime-nav
      dockerfile-mode
      prodigy
-     string-edit
      smooth-scrolling
      undo-tree
      smex
