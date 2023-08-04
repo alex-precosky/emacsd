@@ -294,8 +294,6 @@
  '(electric-indent-mode nil)
  '(flycheck-clang-args '("-Wsign-conversion"))
  '(flycheck-clang-warnings '("all" "extra"))
- '(lsp-clients-clangd-args
-   '("--path-mappings=/home/ANT.AMAZON.COM/precosky/j7hal_ws/src/DexELLARJacintoHAL=/home/ANT.AMAZON.COM/precosky/j7hal_ws/src/DexELLARJacintoHALDemoApps/build/private/tmp/brazil-path/tool.libfarm/j7-hal" "--query-driver=/home/ANT.AMAZON.COM/precosky/brazil-pkg-cache/packages/DexELLGNUArmEmbeddedToolchain/DexELLGNUArmEmbeddedToolchain-10_2020_q4_major.38.0/AL2_x86_64/DEV.STD.PTHREAD/build/gnu-arm-embedded-toolchain/bin/arm-none-eabi*"))
  '(lsp-pyls-plugins-flake8-max-line-length 120)
  '(lsp-pyls-plugins-pycodestyle-max-line-length 120)
  '(lsp-pyls-server-command '("pyls"))
