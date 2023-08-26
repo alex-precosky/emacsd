@@ -349,5 +349,6 @@
 
 (load-theme 'monokai)
 
+(setq undo-tree-auto-save-history nil)
 
 (server-start)
