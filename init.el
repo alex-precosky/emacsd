@@ -8,6 +8,7 @@
 
 ;; So that straight doesn't fight with package
 (setq package-enable-at-startup nil)
+(defvar native-comp-deferred-compilation-deny-list nil)
 
 ;; Set up load path
 (setq settings-dir
