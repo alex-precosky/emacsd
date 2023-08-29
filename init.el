@@ -102,6 +102,8 @@
      exec-path-from-shell
      use-package
      python-black
+     typescript-mode
+     py-isort
      )))
 
 (condition-case nil
@@ -242,6 +244,10 @@
           (lambda ()
             (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
               (ggtags-mode 1))))
+
+;; javascript/typescript
+(add-hook 'typescript-mode-hook 'lsp-deferred)
+(add-hook 'javascript-mode-hook 'lsp-deferred)
 
 (require 'srefactor)
 (require 'srefactor-lisp)
