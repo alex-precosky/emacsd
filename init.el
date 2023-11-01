@@ -49,7 +49,6 @@
      realgud
      magit
      company
-     ggtags
      helm
      paredit
      move-text
@@ -244,7 +243,7 @@
 (add-hook 'c-mode-common-hook
           (lambda ()
             (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
-              (ggtags-mode 1))))
+              ))) ; this space for rent
 
 ;; javascript/typescript
 (add-hook 'typescript-mode-hook 'lsp-deferred)
