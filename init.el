@@ -104,6 +104,7 @@
      python-black
      typescript-mode
      py-isort
+     with-venv
      )))
 
 (condition-case nil
@@ -151,11 +152,23 @@
                          (require 'lsp-pyright)
                          (lsp))))
 
-;; python shell to ipython
-(setenv "IPY_TEST_SIMPLE_PROMPT" "1")
+(use-package pyvenv
+  :ensure t
+  :init
+  (setenv "WORKON_HOME" "~/.venvs/")
+  :config
+
+;; Set correct Python interpreter when activating a venv
+(setq pyvenv-post-activate-hooks
+      (list (lambda ()
+              (setq python-shell-interpreter (concat pyvenv-virtual-env "bin/python")))))
+(setq pyvenv-post-deactivate-hooks
+      (list (lambda ()
+              (setq python-shell-interpreter "python3")))))
+
+;; python shell to python3
 (require 'python)
-(setq python-shell-interpreter "ipython")
-(setq python-shell-interpreter-args "--pylab")
+(setq python-shell-interpreter "python3")
 
 
 ; site-specific config files
@@ -281,6 +294,21 @@
 (setq lsp-enable-on-type-formatting nil)
 (setq lsp-enable-indentation nil)
 
+;; DAP
+(use-package dap-mode
+  :after lsp-mode
+  :commands dap-debug
+  :hook ((python-mode . dap-ui-mode) (python-mode . dap-mode))
+  :config
+  (require 'dap-python)
+  (setq dap-python-debugger 'debugpy)
+  (defun dap-python--pyenv-executable-find (command)
+    (with-venv (executable-find "python")))
+  (add-hook 'dap-stopped-hook
+            (lambda (arg) (call-interactively #'dap-hydra)))
+)
+(add-to-list 'image-types 'svg)
+
 ; multiple cursors
 (global-set-key (kbd "C-c m c") 'mc/edit-lines)
 
@@ -305,7 +333,7 @@
  '(lsp-pyls-server-command '("pyls"))
  '(nyan-mode t)
  '(package-selected-packages
-   '(sphinx-doc python-docstring python-black lsp-pyright use-package rust-mode projectile git-timemachine clang-format flycheck-clang-analyzer multiple-cursors org-bullets counsel ivy-yasnippet swiper helm ggtags company-c-headers flymake-solidity solidity-mode powerline csv-mode nyan-mode monokai-theme jedi skewer-mode yasnippet whitespace-cleanup-mode visual-regexp undo-tree string-edit smooth-scrolling smex smartparens simple-httpd restclient prodigy paredit move-text markdown-mode magit ido-vertical-mode ido-completing-read ido-at-point htmlize highlight-escape-sequences guide-key flycheck-pos-tip flx-ido fill-column-indicator elisp-slime-nav dockerfile-mode css-eldoc))
+   '(sphinx-doc python-docstring python-black lsp-pyright use-package rust-mode projectile git-timemachine clang-format flycheck-clang-analyzer multiple-cursors org-bullets counsel ivy-yasnippet swiper helm company-c-headers flymake-solidity solidity-mode powerline csv-mode nyan-mode monokai-theme jedi skewer-mode yasnippet whitespace-cleanup-mode visual-regexp undo-tree string-edit smooth-scrolling smex smartparens simple-httpd restclient prodigy paredit move-text markdown-mode magit ido-vertical-mode ido-completing-read ido-at-point htmlize highlight-escape-sequences guide-key flycheck-pos-tip flx-ido fill-column-indicator elisp-slime-nav dockerfile-mode css-eldoc))
  '(realgud:gdb-command-name "gdb-multiarch")
  '(whitespace-style
    '(face trailing tabs empty indentation space-after-tab space-before-tab tab-mark)))
