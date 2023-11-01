@@ -155,7 +155,7 @@
 (use-package pyvenv
   :ensure t
   :init
-  (setenv "WORKON_HOME" "~/.venvs/")
+  (setenv "WORKON_HOME" "~/venv310/")
   :config
 
 ;; Set correct Python interpreter when activating a venv
@@ -293,6 +293,12 @@
 ;; lsp
 (setq lsp-enable-on-type-formatting nil)
 (setq lsp-enable-indentation nil)
+
+;; lsp-treemacs
+(use-package lsp-treemacs
+  :after (lsp)
+  :straight t
+  :commands lsp-treemacs-errors-list)
 
 ;; DAP
 (use-package dap-mode
