@@ -392,5 +392,25 @@
 
 (load-theme 'monokai)
 
+(defun clang-format-disable-region (beginning end) "Disable clang format for a region" (interactive "r")
+    (message "Region is %d to %d" beginning end)
+    (save-excursion
+        (narrow-to-region beginning end)
+        (set-mark nil)
+
+        (goto-char (point-max))
+	(insert "\n")
+        (insert "/* clang-format on */")
+        (indent-according-to-mode)
+
+        (goto-char (point-min))
+        (insert "/* clang-format off */")
+        (indent-according-to-mode)
+	(insert "\n")
+
+        (widen)
+    )
+)
+
 
 (server-start)
