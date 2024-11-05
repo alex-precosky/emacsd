@@ -95,7 +95,6 @@
      flycheck-clang-analyzer
      clang-format
      git-timemachine
-     projectile
      expand-region
      lsp-java
      rust-mode
@@ -385,10 +384,11 @@
 
 
 
-(projectile-mode +1)
-(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-(setq projectile-indexing-method 'hybrid)
+(use-package projectile
+  :config
+  (projectile-mode +1)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  (setq projectile-indexing-method 'hybrid))
 
 (load-theme 'monokai)
 
