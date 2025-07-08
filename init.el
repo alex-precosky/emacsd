@@ -265,6 +265,7 @@
 
 ;; javascript/typescript
 (add-hook 'typescript-mode-hook 'lsp-deferred)
+(add-hook 'typescript-ts-mode-hook 'lsp-deferred)
 (add-hook 'javascript-mode-hook 'lsp-deferred)
 
 (require 'srefactor)
