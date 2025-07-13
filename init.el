@@ -1,8 +1,5 @@
 ;; used https://github.com/magnars as a starting point
 
-;; install first:
-;; dash (modern list API)
-
 ;; Uncomment this when debugging things
 ;; (setq debug-on-error t)
 
