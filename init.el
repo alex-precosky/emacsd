@@ -390,15 +390,6 @@
 ;; S-arrow navigation for moving between windows
 (windmove-default-keybindings)
 
-
-
-
-(use-package projectile
-  :config
-  (projectile-mode +1)
-  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-  (setq projectile-indexing-method 'hybrid))
-
 (load-theme 'monokai)
 
 (defun clang-format-disable-region (beginning end) "Disable clang format for a region" (interactive "r")
