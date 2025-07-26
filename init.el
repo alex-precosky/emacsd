@@ -332,7 +332,9 @@
 	  'flycheck-mode )
 
 ; rust
-(add-hook 'rust-mode-hook 'lsp)
+(add-hook 'rust-mode-hook 'eglot-ensure)
+(add-hook 'rust-mode-hook 'company-mode)
+(add-hook 'rust-ts-mode-hook 'eglot-ensure)
 (add-hook 'rust-mode-hook 'yas-minor-mode)
 
 
