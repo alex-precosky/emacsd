@@ -109,6 +109,11 @@
    (package-refresh-contents)
       (init--install-packages)))
 
+;; no-littering so we don't get undo-tree files everywhere
+(use-package no-littering
+  :ensure t)
+(no-littering-theme-backups)
+
 ;; Lets start with a smattering of sanity
 (require 'sane-defaults)
 
