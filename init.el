@@ -159,24 +159,6 @@
                          (require 'lsp-pyright)
                          (lsp))))
 
-(use-package pyvenv
-  :ensure t
-  :init
-  (setenv "WORKON_HOME" "~/venv310/")
-  :config
-
-;; Set correct Python interpreter when activating a venv
-(setq pyvenv-post-activate-hooks
-      (list (lambda ()
-              (setq python-shell-interpreter (concat pyvenv-virtual-env "bin/python")))))
-(setq pyvenv-post-deactivate-hooks
-      (list (lambda ()
-              (setq python-shell-interpreter "python3")))))
-
-;; python shell to python3
-(require 'python)
-(setq python-shell-interpreter "python3")
-
 
 ; site-specific config files
 (defvar host (substring (shell-command-to-string "hostname") 0 -1))
