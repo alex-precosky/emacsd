@@ -94,7 +94,6 @@
      git-timemachine
      expand-region
      lsp-java
-     rust-mode
      exec-path-from-shell
      use-package
      python-black
@@ -314,6 +313,11 @@
 	  'flycheck-mode )
 
 ; rust
+(use-package rust-mode
+  :config (progn
+            (setq rust-format-on-save t)
+            (setq indent-tabs-mode nil)))
+
 (add-hook 'rust-mode-hook 'eglot-ensure)
 (add-hook 'rust-mode-hook 'company-mode)
 (add-hook 'rust-ts-mode-hook 'eglot-ensure)
