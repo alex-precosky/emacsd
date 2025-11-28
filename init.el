@@ -257,7 +257,7 @@
 
 (setq-default set-indent-tabs-mode nil)
 
-(add-hook 'c-mode-common-hook 'lsp)
+;; (add-hook 'c-mode-common-hook 'lsp)
 (add-hook 'c-mode-common-hook
 	  'company-mode )
 (add-hook 'c-mode-common-hook
@@ -315,8 +315,11 @@
 ; rust
 (use-package rust-mode
   :config (progn
-            (setq rust-format-on-save t)
             (setq indent-tabs-mode nil)))
+
+(add-hook 'rust-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook #'eglot-format-buffer nil 'local)))
 
 (add-hook 'rust-mode-hook 'eglot-ensure)
 (add-hook 'rust-mode-hook 'company-mode)
