@@ -251,7 +251,9 @@
 (add-hook 'typescript-ts-mode-hook 'lsp-deferred)
 (add-hook 'javascript-mode-hook 'lsp-deferred)
 
-(require 'srefactor)
+(use-package srefactor
+    :mode ("\\.(c|cpp|h|hpp|hxx"))
+
 (require 'srefactor-lisp)
 (require 'whitespace)
 
