@@ -110,8 +110,10 @@
 
 ;; no-littering so we don't get undo-tree files everywhere
 (use-package no-littering
-  :ensure t)
-(no-littering-theme-backups)
+  :ensure t
+  :config
+  (no-littering-theme-backups))
+
 
 ;; Lets start with a smattering of sanity
 (require 'sane-defaults)
