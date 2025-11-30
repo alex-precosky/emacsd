@@ -252,7 +252,12 @@
 (add-hook 'javascript-mode-hook 'lsp-deferred)
 
 (use-package srefactor
-    :mode ("\\.(c|cpp|h|hpp|hxx"))
+  :mode ("\\.(c|cpp|h|hpp|hxx")
+  :bind (:map c-mode-map
+	      ("M-RET" . srefactor-refactor-at-point))
+  :bind (:map c++-mode-map
+	      ("M-RET" . srefactor-refactor-at-point))	      
+  )
 
 (require 'srefactor-lisp)
 (require 'whitespace)
@@ -277,8 +282,6 @@
 (setq company-minimum-prefix-length 1
       company-idle-delay 0.0) ;; default is 0.2
 
-(define-key c-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
-(define-key c++-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++11")))
 
 ;; lsp
