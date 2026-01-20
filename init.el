@@ -333,6 +333,10 @@
 (add-hook 'rust-ts-mode-hook 'eglot-ensure)
 (add-hook 'rust-mode-hook 'yas-minor-mode)
 
+; clipetty let use use the system clipboard in emacs, even across SSH or tmux sessions
+(use-package clipetty
+  :ensure t
+  :hook (after-init . global-clipetty-mode))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
