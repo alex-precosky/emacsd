@@ -43,7 +43,6 @@
 (defun init--install-packages ()
   (packages-install
    '(
-     realgud
      magit
      company
      helm
@@ -191,13 +190,6 @@
 ;; gdb
 ;; gdb
 (setq gdb-many-windows 1)
-(eval-after-load "gud"
-  '(progn 
-     (define-key gud-mode-map (kbd "<up>") 'comint-previous-input)
-     (define-key gud-mode-map (kbd "<down>") 'comint-next-input)))
-
-;;; Real GUD
-(require 'realgud)
 
 ;; git-gutter
 (global-git-gutter-mode +1)
@@ -354,7 +346,6 @@
  '(nyan-mode t)
  '(package-selected-packages
    '(sphinx-doc python-docstring python-black lsp-pyright use-package rust-mode projectile git-timemachine clang-format flycheck-clang-analyzer multiple-cursors org-bullets counsel ivy-yasnippet swiper helm company-c-headers flymake-solidity solidity-mode powerline csv-mode nyan-mode monokai-theme jedi skewer-mode yasnippet whitespace-cleanup-mode visual-regexp undo-tree string-edit smooth-scrolling smex smartparens simple-httpd restclient prodigy paredit move-text markdown-mode magit ido-vertical-mode ido-completing-read ido-at-point htmlize highlight-escape-sequences guide-key flycheck-pos-tip flx-ido fill-column-indicator elisp-slime-nav dockerfile-mode css-eldoc))
- '(realgud:gdb-command-name "gdb-multiarch")
  '(whitespace-style
    '(face trailing tabs empty indentation space-after-tab space-before-tab tab-mark)))
 
